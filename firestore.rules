@@ -1,0 +1,30 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /signatures/{partnerId} {
+      // Anyone can read the signature status (needed so all partners see live progress)
+      allow read: if true;
+
+      // A signature can only be CREATED, never updated or deleted —
+      // this prevents anyone from re-signing, backdating, or altering
+      // a signature once it exists.
+      allow update, delete: if false;
+
+      allow create: if
+        // Can't overwrite — this partner must not have signed already
+        !exists(/databases/$(database)/documents/signatures/$(partnerId)) &&
+
+        // Required fields must be present and the correct type
+        request.resource.data.keys().hasAll(['name', 'cnic', 'address', 'signatureDataUrl', 'signedAt']) &&
+        request.resource.data.name is string &&
+        request.resource.data.cnic is string &&
+        request.resource.data.address is string &&
+        request.resource.data.signatureDataUrl is string &&
+
+        // The signing timestamp MUST equal Firebase's own server clock at
+        // the moment of the write — this is what makes the date tamper-proof.
+        // A visitor cannot submit their own fake Date object here.
+        request.resource.data.signedAt == request.time;
+    }
+  }
+}

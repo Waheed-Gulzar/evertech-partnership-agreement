@@ -1,0 +1,88 @@
+:root{
+  --ink:#0E1626; --surface:#141F30; --surface-2:#1B2A40;
+  --hairline:#28394F; --hairline-bright:#3A5170;
+  --blueprint:#5EC8E8; --amber:#E8963D;
+  --text:#EDEFF2; --muted:#8496AC;
+}
+*{ box-sizing:border-box; }
+body{
+  margin:0; background:var(--ink); color:var(--text);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  line-height:1.6;
+}
+.wrap{ max-width:720px; margin:0 auto; padding:40px 24px 80px; }
+header{ text-align:center; margin-bottom:36px; }
+h1{ font-size:26px; margin:0 0 8px; font-weight:700; }
+h2{ font-size:17px; margin:0 0 14px; font-weight:700; color:var(--blueprint); }
+.sub{ color:var(--muted); font-size:14px; margin:0; }
+
+.effective-banner{
+  margin-top:18px; background:var(--surface); border:1px solid var(--blueprint);
+  border-radius:10px; padding:14px 18px; font-size:14px; color:var(--text);
+}
+
+section{
+  background:var(--surface); border:1px solid var(--hairline);
+  border-radius:14px; padding:24px; margin-bottom:20px;
+}
+
+.status-list{ display:flex; flex-direction:column; gap:10px; }
+.status-row{
+  display:flex; align-items:center; justify-content:space-between;
+  background:var(--surface-2); border:1px solid var(--hairline);
+  border-radius:8px; padding:12px 14px; font-size:14px;
+}
+.status-row .pname{ font-weight:600; }
+.status-row .pstate{ font-size:12.5px; padding:4px 10px; border-radius:99px; }
+.pstate.pending{ background:rgba(232,150,61,0.15); color:var(--amber); }
+.pstate.signed{ background:rgba(94,200,232,0.15); color:var(--blueprint); }
+.loading{ color:var(--muted); font-size:13.5px; }
+
+select{
+  width:100%; background:var(--surface-2); border:1px solid var(--hairline);
+  color:var(--text); padding:12px; border-radius:8px; font-size:15px; margin-top:8px;
+}
+
+.contract-text{
+  max-height:320px; overflow-y:auto; background:var(--surface-2);
+  border:1px solid var(--hairline); border-radius:10px; padding:16px 18px;
+  margin-bottom:24px; font-size:13.5px; color:var(--muted);
+}
+.contract-text h3{ color:var(--text); font-size:14.5px; margin:18px 0 8px; }
+.contract-text h3:first-child{ margin-top:0; }
+.contract-text p{ margin:0 0 10px; line-height:1.65; }
+
+label{ display:block; font-size:12.5px; color:var(--muted); margin:16px 0 6px; font-weight:500; }
+input[type=text]{
+  width:100%; background:var(--surface-2); border:1px solid var(--hairline);
+  color:var(--text); padding:11px 12px; border-radius:8px; font-size:14.5px; outline:none;
+}
+input[type=text]:focus{ border-color:var(--blueprint); }
+
+.pad-card{
+  background:var(--surface-2); border:1px solid var(--hairline);
+  border-radius:12px; padding:14px; margin:16px 0 8px;
+}
+canvas{
+  width:100%; height:180px; background:#fff; border-radius:8px;
+  touch-action:none; cursor:crosshair; display:block;
+}
+.hint{ font-size:11.5px; color:var(--muted); margin-top:8px; text-align:center; }
+
+.row{ display:flex; gap:10px; margin:16px 0 10px; }
+button{
+  font-family:inherit; font-size:14px; font-weight:600; border:none;
+  border-radius:8px; padding:13px 20px; cursor:pointer;
+}
+.btn-clear{ background:var(--surface-2); color:var(--text); border:1px solid var(--hairline); }
+.btn-save{ background:var(--amber); color:#241705; flex:1; }
+.btn-save:disabled{ opacity:0.5; cursor:not-allowed; }
+
+.status{ font-size:12.5px; min-height:16px; margin-bottom:8px; }
+.status.ok{ color:var(--blueprint); }
+.status.err{ color:#E86A6A; }
+
+.legal-note{ font-size:11.5px; color:var(--muted); line-height:1.6; margin-top:14px; }
+
+.already-signed p{ color:var(--muted); font-size:14px; }
+.download-section p{ color:var(--muted); font-size:14px; margin-bottom:16px; }

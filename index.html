@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EverTech Partnership Agreement — Sign</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>EverTech Partnership &amp; Profit-Sharing Agreement</h1>
+    <p class="sub">Electronic signing — all 4 partners must sign for the agreement to take effect.</p>
+    <div id="effectiveDateBanner" class="effective-banner" style="display:none;"></div>
+  </header>
+
+  <section class="status-board">
+    <h2>Signing Status</h2>
+    <div id="statusList" class="status-list">
+      <div class="loading">Loading signing status…</div>
+    </div>
+  </section>
+
+  <section class="identity-picker" id="identityPicker">
+    <h2>Who are you?</h2>
+    <p class="sub">Select your name to review and sign the agreement.</p>
+    <select id="partnerSelect">
+      <option value="">— Select your name —</option>
+    </select>
+  </section>
+
+  <section class="sign-section" id="signSection" style="display:none;">
+    <h2>Review the Agreement</h2>
+    <div id="contractText" class="contract-text"></div>
+
+    <h2>Your Details</h2>
+    <label for="cnicInput">CNIC Number</label>
+    <input type="text" id="cnicInput" placeholder="e.g. 35202-1234567-1">
+
+    <label for="addressInput">Address</label>
+    <input type="text" id="addressInput" placeholder="Your current address">
+
+    <h2>Your Signature</h2>
+    <div class="pad-card">
+      <canvas id="pad"></canvas>
+      <div class="hint">Draw your signature above using mouse or touch</div>
+    </div>
+    <div class="row">
+      <button class="btn-clear" id="clearBtn">Clear</button>
+      <button class="btn-save" id="saveBtn">Sign &amp; Submit</button>
+    </div>
+    <div class="status" id="formStatus"></div>
+    <p class="legal-note">By signing, you confirm the details above are accurate and that you agree to be bound by the terms of this Agreement. Your signing date and time will be recorded automatically by the system and cannot be altered.</p>
+  </section>
+
+  <section class="already-signed" id="alreadySignedSection" style="display:none;">
+    <h2>You've already signed</h2>
+    <p id="alreadySignedText"></p>
+  </section>
+
+  <section class="download-section" id="downloadSection" style="display:none;">
+    <h2>All partners have signed</h2>
+    <p>The agreement is now fully executed. Download the complete, merged document below.</p>
+    <button class="btn-save" id="downloadBtn">Download Complete Signed Agreement (PDF)</button>
+  </section>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="firebase-config.js"></script>
+<script src="contract-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
